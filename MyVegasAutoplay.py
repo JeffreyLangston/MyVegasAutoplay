@@ -154,6 +154,7 @@ def Main():
 	
 	closeState = currentState.GetBottom()
 	closeState.pushChild(Close)
+	
 	World.FileLocations.append(Screen.Files(parentPath + Folder+ 'MapCollect.png',(10,10)))
 	World.FileLocations.append(Screen.Files(parentPath + Folder+ 'MapCollect.bmp',(10,10)))
 	closeState.pushChild(World)
