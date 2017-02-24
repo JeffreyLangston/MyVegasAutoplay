@@ -150,6 +150,15 @@ def Main():
 		
 	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close.png',(10,10)))
 	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close.bmp',(10,10)))
+	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close2.png',(10,10)))
+	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close2.bmp',(10,10)))
+	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close3.png',(10,10)))
+	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close3.bmp',(10,10)))
+	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close4.png',(10,10)))
+	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close4.bmp',(10,10)))
+	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close5.png',(10,10)))
+	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close5.bmp',(10,10)))
+	Close.FileLocations.append(Screen.Files(parentPath + Folder+ 'Close6.png',(10,10)))
 	currentState.pushToBottom(Close)
 	
 	closeState = currentState.GetBottom()
@@ -190,6 +199,7 @@ def Main():
 			
 	def isOnScreen(ScreenType):
 		for screen in ScreenType.FileLocations:
+			print(screen.FileName)
 			onScreen = pyautogui.locateOnScreen(screen.FileName, grayscale=True)
 			if onScreen != None:
 				clickLocation = (onScreen[0]+screen.ClickLocation[0],onScreen[1]+screen.ClickLocation[1])
@@ -197,12 +207,12 @@ def Main():
 		return None
 		
 	def DetectStateChange(currentState):
-		print(currentState.item.Name)
+		print('currentState ' + currentState.item.Name)
 		TempLocation = None
 		print('Detecting Changes...')
 		
 		for screen in currentState.children:
-			print(screen.item.Name)
+			print('Searching for ' + screen.item.Name)
 			TempLocation = isOnScreen(screen.item)
 			if TempLocation != None:
 				print('Found!')
@@ -223,6 +233,7 @@ def Main():
 		pyautogui.moveTo(clickLocation[0], clickLocation[1], 1)
 		try:
 			pyautogui.click()
+			pyautogui.moveTo(0,0)
 		except:
 			pass
 			
